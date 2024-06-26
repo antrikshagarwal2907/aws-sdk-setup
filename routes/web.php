@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use Aws\S3\S3Client;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,5 +14,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    $s3 = new S3Client([
+        'region' => 'us-east-2'  // Since version 3.277.10 of the SDK,
+    ]);
+    dd($s3);
+// return view('welcome');
 });
